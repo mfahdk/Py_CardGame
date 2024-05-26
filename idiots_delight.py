@@ -1,11 +1,11 @@
 import cards
 
 def deal_hand():                                    #function to deal the cards on hand                            
-    Deck=cards_gcis123.make_deck()
-    ShuffledDeck=cards_gcis123.shuffle(Deck)
+    Deck=cards.make_deck()
+    ShuffledDeck=cards.shuffle(Deck)
     hand=[]
     for x in range(4):
-        hand,ShuffledDeck=cards_gcis123.draw(hand,ShuffledDeck)
+        hand,ShuffledDeck=cards.draw(hand,ShuffledDeck)
     return(Deck,ShuffledDeck,hand)
 
 def discard(hand,numb):                             #function for discarding cards on hand
@@ -26,13 +26,13 @@ def play_round(deck,hand):                          #function for playing a roun
         cards_to_draw=4-len(hand)
         if len(deck)>=cards_to_draw:
             for _ in range(cards_to_draw):
-                hand,deck = cards_gcis123.draw(hand,deck)
+                hand,deck = cards.draw(hand,deck)
         else:
             print("\033[31mHere, Both the Deck and the Hand don't have enough Cards!\033[37m")
     
     print("\033[32mYour current hand is\033[37m:")
     for i in hand:
-        cards_gcis123.print_card(i)
+        cards.print_card(i)
 
     if hand[0][-1]==hand[1][-1]:
         if hand[0][-1]==hand[2][-1]:
@@ -41,12 +41,12 @@ def play_round(deck,hand):                          #function for playing a roun
 
     repeating_game=True
     while repeating_game==True:
-        hand,deck,repeating_game=cards_gcis123.play_round(hand,deck)
+        hand,deck,repeating_game=cards.play_round(hand,deck)
 
     if len(hand)>0:
         print("\033[30m---------------\033[37m\n\033[32mYour hand is Now ->\033[37m:")
         for y in hand:
-            cards_gcis123.print_card(y)
+            cards.print_card(y)
         print("\033[30m---------------\033[37m")
     else:
         print("\033[30m---------------\033[37m")
